@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des personnes</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Liste des personnes</h1>
+
+<table border="1">
+  <tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Actions</th>
+  </tr>
+  <!-- Boucle Thymeleaf : th:each avec stat pour obtenir l'index -->
+  <tr th:each="person, stat : ${persons}">
+    <td th:text="${person.firstName}"></td>
+    <td th:text="${person.lastName}"></td>
+    <td>
+      <a th:href="@{/person/edit/{index}(index=${stat.index})}">Modifier</a>
+
+      <a th:href="@{/person/delete/{index}(index=${stat.index})}"
+         onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette personne ?');">Supprimer</a>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<a th:href="@{/person/add}">Ajouter une personne</a>
+<br/><br>
+<a th:href="@{/person/index}">Retour à l'accueil</a>
+</body>
+</html>

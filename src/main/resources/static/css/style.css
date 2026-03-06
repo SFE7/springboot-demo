@@ -1,0 +1,200 @@
+/* Palette et base visuelle */
+:root {
+    --bg: #f3f6fb;
+    --surface: #ffffff;
+    --text: #1f2d3d;
+    --muted: #5a6b7b;
+    --primary: #1d72d8;
+    --primary-dark: #1459ad;
+    --danger: #c0392b;
+    --border: #dbe3ee;
+    --shadow: 0 8px 22px rgba(31, 45, 61, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 24px;
+    background: linear-gradient(180deg, #f7f9fd 0%, var(--bg) 100%);
+    color: var(--text);
+    max-width: 980px;
+}
+
+h1 {
+    color: #1e3a5f;
+    margin: 0 0 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #226f45;
+    margin-top: 20px;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+/* Tableau des personnes */
+table {
+    width: 100%;
+    background-color: var(--surface);
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background-color: #eaf2fd;
+    color: #1c4f8f;
+    font-weight: 700;
+}
+
+tr:nth-child(even) td {
+    background-color: #fbfdff;
+}
+
+tr:hover td {
+    background-color: #f2f7ff;
+}
+
+/* Liens et actions */
+a {
+    display: inline-block;
+    background-color: var(--primary);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 8px 12px;
+    line-height: 1.2;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.06s ease;
+}
+
+a:hover,
+a:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:active {
+    transform: translateY(1px);
+}
+
+a + a {
+    margin-left: 6px;
+}
+
+/* Met en evidence les actions destructives */
+a[href*="/delete/"] {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+a[href*="/delete/"]:hover,
+a[href*="/delete/"]:focus {
+    background-color: #a92d22;
+    border-color: #a92d22;
+}
+
+/* Formulaires */
+form {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+    max-width: 520px;
+}
+
+label {
+    display: block;
+    margin: 8px 0 6px;
+    font-weight: 700;
+    color: #29435f;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #c8d6e8;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 10px;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(29, 114, 216, 0.15);
+}
+
+input[type="submit"],
+button[type="submit"] {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Messages d'erreur inline (fallback via style attr) */
+div[style*="color: red"] {
+    background-color: #fff3f2;
+    border: 1px solid #f2c8c4;
+    color: var(--danger) !important;
+    padding: 10px 12px;
+    border-radius: 8px;
+    max-width: 520px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    body {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 1.45rem;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    form {
+        max-width: 100%;
+        padding: 14px;
+    }
+}

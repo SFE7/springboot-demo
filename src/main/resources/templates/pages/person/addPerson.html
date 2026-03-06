@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter une personne</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Ajouter une nouvelle personne</h1>
+
+<!-- Formulaire avec th:object et th:field -->
+<form th:action="@{/person/add}" th:object="${personForm}" method="POST">
+  <label for="firstName">Prénom :</label>
+  <input type="text" id="firstName" th:field="*{firstName}" required/>
+  <br/>
+
+  <label for="lastName">Nom de famille :</label>
+  <input type="text" id="lastName" th:field="*{lastName}" required/>
+  <br/>
+
+  <input type="submit" value="Créer"/>
+</form>
+
+<!-- Afficher le message d'erreur s'il existe -->
+<div th:if="${errorMessage != null}" style="color: red; margin-top: 15px;">
+  <strong>Erreur :</strong> <span th:text="${errorMessage}"></span>
+</div>
+
+<br/>
+<a th:href="@{/person/list}">Retour à la liste</a>
+</body>
+</html>
